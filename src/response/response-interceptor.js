@@ -1,16 +1,19 @@
-const { getResponseDetails } = require('./helpers');
+const {
+  appendResponseDetailsToLastApiCall,
+  getResponseDetails
+} = require('./helpers');
 
 const responseInterceptor = {
   onError(error) {
     const responseDetails = getResponseDetails(error.response);
-    // apiDocGeneratorHelper.appendResponseDetailsToLastApiCall(responseDetails); // TODO: use REDIS instead of object
+    appendResponseDetailsToLastApiCall(responseDetails);
 
     return Promise.reject(error);
   },
 
   onSuccess(response) {
     const responseDetails = getResponseDetails(response);
-    // apiDocGeneratorHelper.appendResponseDetailsToLastApiCall(responseDetails); // TODO: use REDIS instead of object
+    appendResponseDetailsToLastApiCall(responseDetails);
 
     return response;
   },

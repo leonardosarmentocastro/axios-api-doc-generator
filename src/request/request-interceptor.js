@@ -1,4 +1,5 @@
-const { getRequestCustomHeaders } = require('../helpers');
+const { apiCalls } = require('../commons/singletons');
+const { getRequestCustomHeaders } = require('./helpers');
 
 const requestInterceptor = {
   async onSuccess() {
@@ -8,12 +9,10 @@ const requestInterceptor = {
       responseDetails: null,
     };
 
-    // TODO: add to json file in tmp
-
-    // TODO: add to json file in tmp
+    apiCalls.push(apiCall);
 
     return config;
-  }
+  },
 };
 
 module.exports = {
