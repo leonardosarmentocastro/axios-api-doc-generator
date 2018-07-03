@@ -9,9 +9,9 @@ const getRequestDetails = (config) => {
 
   const requestCustomHeaders = getRequestCustomHeaders(config.headers);
   const requestDetails = {
-    requestCustomHeaders,
+    headers: requestCustomHeaders,
     method,
-    url,
+    path: url,
   };
 
   return requestDetails;

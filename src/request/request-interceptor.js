@@ -1,9 +1,9 @@
 const { apiCalls } = require('../commons/singletons');
-const { getRequestCustomHeaders } = require('./helpers');
+const { getRequestDetails } = require('./helpers');
 
 const requestInterceptor = {
-  async onSuccess() {
-    const requestDetails = getRequestCustomHeaders(config);
+  onSuccess(config) {
+    const requestDetails = getRequestDetails(config);
     const apiCall = {
       requestDetails,
       responseDetails: null,
@@ -15,6 +15,4 @@ const requestInterceptor = {
   },
 };
 
-module.exports = {
-  requestInterceptor,
-};
+module.exports = requestInterceptor;

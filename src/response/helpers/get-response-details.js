@@ -1,4 +1,4 @@
-const { getResponseCustomHeaders } = require('../helpers');
+const getResponseCustomHeaders = require('./get-response-custom-headers');
 
 const getResponseDetails = (response) => {
   const {
@@ -11,9 +11,11 @@ const getResponseDetails = (response) => {
   const responseCustomHeaders = getResponseCustomHeaders(headers);
   const responseDetails = {
     body,
-    responseCustomHeaders,
-    status,
-    statusText,
+    headers: responseCustomHeaders,
+    status: {
+      code: status,
+      text: statusText,
+    },
   };
 
   return responseDetails;
