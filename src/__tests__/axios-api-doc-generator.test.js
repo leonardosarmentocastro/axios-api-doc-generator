@@ -5,11 +5,11 @@ const {
 } = require('./helpers/tests-helper');
 const axiosApiDocGenerator = require('../axios-api-doc-generator');
 
-beforeAll(() => startWebserver());
+beforeAll(async () => await startWebserver());
 
-afterAll(() => {
+afterAll(async () => {
   // generateApiDocs(); // TODO.
-  closeWebserver();
+  return await closeWebserver();
 });
 
 describe('Generating API DOCS for:', () => {
