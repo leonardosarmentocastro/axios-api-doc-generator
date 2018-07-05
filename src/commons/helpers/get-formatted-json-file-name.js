@@ -1,5 +1,5 @@
 const { API_DOCS_TEMP_JSON_FOLDER_PATH } = require('../constants');
-const { getFormattedPathForJsonFile } = require('../../request/helpers');
+const getFormattedPathForJsonFile = require('./get-formatted-path-for-json-file');
 
 const getFormattedJsonFileName = (firstApiCall) => {
   const {
