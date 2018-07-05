@@ -1,5 +1,2 @@
-const appendContentToFile = require('./append-content-to-file');
-
-module.exports = {
-  appendContentToFile,
-};
+exports.createDirectory = require('./create-directory');
+exports.createJsonFile = require('./create-json-file');

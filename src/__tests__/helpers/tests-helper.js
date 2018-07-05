@@ -29,9 +29,6 @@ const testsHelper = {
   closeWebserver() {
     return webserver.close();
   },
-  generateApiDocs() {
-    const { apiCalls } = axiosApiDocGenerator.singletons;
-  },
   startWebserver() {
     return webserver.start();
   },

@@ -8,10 +8,11 @@ const axiosApiDocGenerator = require('../axios-api-doc-generator');
 beforeAll(async () => await startWebserver());
 
 afterAll(async () => {
-  // generateApiDocs(); // TODO.
+  axiosApiDocGenerator.createApiDocsForTests();
   return await closeWebserver();
 });
 
+// TODO: Change this file so we can test the "singletons" and created "json" files.
 describe('Generating API DOCS for:', () => {
   describe('[GET] /hello-world', () => {
     const specs = {
