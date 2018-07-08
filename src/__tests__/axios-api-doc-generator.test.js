@@ -12,7 +12,6 @@ afterAll(async () => {
   return await closeWebserver();
 });
 
-// TODO: Change this file so we can test the "singletons" and created "json" files.
 describe('Generating API DOCS for:', () => {
   describe('[GET] /hello-world', () => {
     const specs = {
@@ -86,7 +85,7 @@ describe('Generating API DOCS for:', () => {
     });
 
     describe('generated ".json" file', () => {
-
+      // TODO
     });
   });
 });

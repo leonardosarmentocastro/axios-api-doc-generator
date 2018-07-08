@@ -1,11 +1,12 @@
 const { API_DOCS_TEMP_JSON_FOLDER_PATH } = require('./commons/constants');
-const { getFormattedJsonFileName } = require('./commons/helpers');
+const { appendTestResultToLastApiCall, getFormattedJsonFileName } = require('./commons/helpers');
 const { createDirectory, createJsonFile } = require('./commons/utils');
 const requestInterceptor = require('./request/request-interceptor');
 const responseInterceptor = require('./response/response-interceptor');
 const singletons = require('./commons/singletons');
 
 const axiosApiDocGenerator = {
+  get appendTestResultToLastApiCall() { return appendTestResultToLastApiCall; },
   get createDirectory() { return createDirectory; },
   get createJsonFile() { return createJsonFile; },
   get getFormattedJsonFileName() { return getFormattedJsonFileName; },
@@ -13,6 +14,12 @@ const axiosApiDocGenerator = {
   get responseInterceptor() { return { ...responseInterceptor }; },
   get singletons() { return { ...singletons }; },
 
+  appendResultToLastApiCall(result) {
+    const { description, fullName } = result;
+    const testResult = { description, fullName };
+
+    this.appendTestResultToLastApiCall(testResult);
+  },
   async createApiDocsForTests() {
     try {
       // TODO 1: at each "npm run test", delete the folder and then recreate it.
@@ -35,7 +42,7 @@ const axiosApiDocGenerator = {
     const err = await this.createJsonFile(formattedJsonFileName, content);
     const wasOperationSuccessful = !(err);
     if (!wasOperationSuccessful) {
-      const error = `[error] Couldn't ".json" file for API calls: ${err}`;
+      const error = `[error] Couldn't create ".json" file for API calls: ${err}`;
       throw error;
     }
 
