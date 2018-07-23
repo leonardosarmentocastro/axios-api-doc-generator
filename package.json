@@ -4,17 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel watch public/index.html",
-    "storybook": "start-storybook -p 9001 -c src/web-app/storybook",
+    "start": "parcel src/web-app/index.html",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@storybook/react": "^3.4.8",
     "axios": "^0.18.0",
-    "babel-core": "^6.26.3",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "cors": "^2.8.4",
@@ -22,12 +19,13 @@
     "express": "^4.16.3",
     "jest": "^23.2.0",
     "morgan": "^1.9.0",
-    "parcel-bundler": "^1.9.3",
+    "parcel-bundler": "^1.9.7",
     "prop-types": "^15.6.2"
   },
   "dependencies": {
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1"
   },
   "jest": {
     "testPathIgnorePatterns": [

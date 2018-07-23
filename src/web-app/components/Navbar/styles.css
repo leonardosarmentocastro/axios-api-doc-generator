@@ -1,0 +1,74 @@
+.navbar {
+  padding: 4.8rem;
+  padding-right: 0;
+
+  border-right: 2px solid var(--color-gray-lighter);
+}
+
+.navbar > .logo > .text {
+  font-family: 'abel-regular';
+  font-size: 3.6rem;
+}
+
+.navbar > .search-input {
+  padding-right: 2.4rem;
+}
+
+.navbar > .search-input > .input {
+  padding-right: .6rem;
+
+  width: 100%;
+  max-width: 36rem;
+
+  border: none;
+  border-bottom: 1px solid var(--color-gray-darker);
+
+  font-family: 'yantramanav-light';
+  font-size: 1.4rem;
+
+  outline: none;
+}
+
+.navbar > .api-calls {
+  margin-top: 8.4rem;
+}
+
+.navbar > .api-calls > .api-call > .request-summary {
+  cursor: pointer;
+
+  font-size: 1.8rem;
+}
+
+.navbar > .api-calls > .api-call > .cases {
+  padding-left: 1.2rem;
+}
+
+.navbar > .api-calls > .api-call > .cases > .case {
+  padding: .6rem 1rem;
+
+  font-family: 'yantramanav-light';
+  font-size: 1.4rem;
+
+  cursor: pointer;
+}
+
+.navbar > .api-calls > .api-call > .cases > .case:hover {
+  background-color: rgba(0,0,0, .03);
+}
+
+/* @variant */
+.navbar > .api-calls > .api-call > .cases.-color-green {
+  color: var(--color-green);
+}
+
+.navbar > .api-calls > .api-call > .cases.-color-green > .case.-is-selected {
+  border-right: 2px solid var(--color-green);
+}
+
+.navbar > .api-calls > .api-call > .cases.-color-red {
+  color: var(--color-red);
+}
+
+.navbar > .api-calls > .api-call > .cases.-color-red > .case.-is-selected {
+  border-right: 2px solid var(--color-red);
+}

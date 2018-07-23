@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'abel-regular';
+  src:
+    url('../../shared/assets/fonts/abel-regular.ttf')
+    format('truetype');
+}
+
+
+@font-face {
+  font-family: 'yantramanav-black';
+  src:
+    url('../../shared/assets/fonts/yantramanav-black.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'yantramanav-bold';
+  src:
+    url('../../shared/assets/fonts/yantramanav-bold.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'yantramanav-light';
+  src:
+    url('../../shared/assets/fonts/yantramanav-light.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'yantramanav-medium';
+  src:
+    url('../../shared/assets/fonts/yantramanav-medium.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'yantramanav-regular';
+  src:
+    url('../../shared/assets/fonts/yantramanav-regular.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'yantramanav-thin';
+  src:
+    url('../../shared/assets/fonts/yantramanav-thin.ttf')
+    format('truetype');
+}
