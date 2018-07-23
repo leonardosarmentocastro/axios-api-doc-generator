@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 //   Switch,
 // } from 'react-router-dom';
 
-// import ApiDoc from '../../components/ApiDoc';
+import ApiCallSummary from '../../components/ApiCallSummary';
 import Navbar from '../../components/Navbar';
 import '../../shared/styles/font-faces.css';
 import '../../shared/styles/variables.css';
@@ -16,6 +16,7 @@ class App extends Component {
     return (
       <div className='app'>
         <Navbar />
+        <ApiCallSummary />
       </div>
     );
   }

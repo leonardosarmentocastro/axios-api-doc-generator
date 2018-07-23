@@ -1,0 +1,181 @@
+.api-call-summary {
+  padding: 12% 18%;
+}
+
+.api-call-summary > .summary-container {
+  margin-bottom: 3.6rem;
+  padding-bottom: 2.4rem;
+
+  border-bottom: 2px solid var(--color-gray-lighter);
+}
+
+.api-call-summary > .summary-container > .title {
+  font-family: 'yantramanav-bold';
+  font-size: 4.8rem;
+}
+
+.api-call-summary > .summary-container > .description {
+  font-family: 'yantramanav-light';
+  font-size: 1.8rem;
+}
+
+/* @component request-details-container */
+.api-call-summary > .request-container {
+  margin-bottom: 2.4rem;
+}
+
+.api-call-summary > .request-container > .title {
+  margin-bottom: 1.2rem;
+
+  font-family: 'yantramanav-bold';
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.api-call-summary > .request-container > .attr-container {
+  margin-bottom: 1.8rem;
+}
+
+.api-call-summary > .request-container > .attr-container > .title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.api-call-summary > .request-container > .attr-container > .methods > .method {
+  padding: .15rem .3rem;
+  margin-right: 1.2rem;
+
+  display: inline-block;
+
+  color: #fff;
+  font-family: 'yantramanav-light';
+  font-size: 1.4rem;
+  text-transform: uppercase;
+
+  background-color: var(--color-gray-darker);
+}
+
+/* @component response-details-container */
+.api-call-summary > .response-container {
+  margin-bottom: 2.4rem;
+}
+
+.api-call-summary > .response-container > .title {
+  margin-bottom: 1.2rem;
+
+  font-family: 'yantramanav-bold';
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.api-call-summary > .response-container > .attr-container {
+  margin-bottom: 1.8rem;
+}
+
+.api-call-summary > .response-container > .attr-container > .title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.api-call-summary > .response-container > .attr-container > .status {
+  padding: .15rem .3rem;
+  margin-right: 1.2rem;
+
+  display: inline-block;
+
+  color: #fff;
+  font-family: 'yantramanav-light';
+  font-size: 1.4rem;
+  text-transform: uppercase;
+
+  background-color: var(--color-gray-darker);
+}
+
+/* @component HeadersTable */
+.api-call-summary .table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.api-call-summary .table .head {
+  font-family: 'yantramanav-bold';
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.api-call-summary .table .body .cell {
+  font-family: 'yantramanav-light';
+  font-size: 1.4rem;
+}
+
+.api-call-summary .table .head, .api-call-summary .table .cell {
+  padding: 1.2rem 2.4rem;
+  border: 1px solid var(--color-gray-lighter);
+}
+
+.api-call-summary .table .row:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* @component */
+.markdown {
+  padding: 1.2rem;
+  box-shadow: inset .1rem .1rem rgba(0, 0, 0, 0.04);
+  background: #fafbfb;
+}
+
+.markdown code {
+  font-size: 1.2em;
+  font-family: 'yantramanav-light';
+}
+
+/* @variant */
+.api-call-summary.-color-blue > .summary-container > .description {
+  color: var(--color-blue);
+}
+
+.api-call-summary.-color-green > .summary-container > .description {
+  color: var(--color-green);
+}
+
+.api-call-summary.-color-red > .summary-container > .description {
+  color: var(--color-red);
+}
+
+.api-call-summary.-color-yellow > .summary-container > .description {
+  color: var(--color-yellow);
+}
+
+
+.api-call-summary.-color-blue > .request-container > .attr-container > .methods > .method.-is-selected {
+  background-color: var(--color-blue);
+}
+
+.api-call-summary.-color-green > .request-container > .attr-container > .methods > .method.-is-selected {
+  background-color: var(--color-green);
+}
+
+.api-call-summary.-color-red > .request-container > .attr-container > .methods > .method.-is-selected {
+  background-color: var(--color-red);
+}
+
+.api-call-summary.-color-yellow > .request-container > .attr-container > .methods > .method.-is-selected {
+  background-color: var(--color-yellow);
+}
+
+
+.api-call-summary.-color-blue > .response-container > .attr-container > .status {
+  background-color: var(--color-blue);
+}
+
+.api-call-summary.-color-green > .response-container > .attr-container > .status {
+  background-color: var(--color-green);
+}
+
+.api-call-summary.-color-red > .response-container > .attr-container > .status {
+  background-color: var(--color-red);
+}
+
+.api-call-summary.-color-yellow > .response-container > .attr-container > .status {
+  background-color: var(--color-yellow);
+}

@@ -11,7 +11,7 @@
 }
 
 .navbar > .search-input {
-  padding-right: 2.4rem;
+  padding-right: 1.2rem;
 }
 
 .navbar > .search-input > .input {
@@ -44,7 +44,7 @@
 }
 
 .navbar > .api-calls > .api-call > .cases > .case {
-  padding: .6rem 1rem;
+  padding: .6rem 1.2rem;
 
   font-family: 'yantramanav-light';
   font-size: 1.4rem;

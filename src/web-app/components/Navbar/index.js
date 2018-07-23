@@ -19,7 +19,7 @@ export default class Navbar extends Component {
             {/* TODO: accordeon with "request-summary" */}
             <p className='request-summary'>[get] /hello-world</p>
             <div className='cases -color-green'>
-              <p className='case -is-selected'>(200) must return an "message" on the body</p>
+              <p className='case'>(200) must return an "message" on the body</p>
               <p className='case'>(200) must return an "potato" on the body</p>
             </div>
           </div>
