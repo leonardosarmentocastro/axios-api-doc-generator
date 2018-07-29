@@ -6,8 +6,8 @@ import './styles.css';
 const Markdown = () => (
   <ReactMarkdown
     className="Markdown"
-    skipHtml={'skip'}
-    escapeHtml={'escape'}
+    skipHtml={true}
+    escapeHtml={true}
     source={`
 \`\`\`json
 {

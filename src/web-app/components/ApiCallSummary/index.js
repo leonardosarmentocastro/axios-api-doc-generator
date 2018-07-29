@@ -13,8 +13,12 @@ export default class ApiCallSummary extends Component {
           <p className='description'>(500) must return an "error" object when receiving an empty "user"</p>
         </div>
 
-        <RequestSummary />
-        <ResponseSummary />
+        <RequestSummary
+
+        />
+        <ResponseSummary
+
+        />
       </div>
     );
   }

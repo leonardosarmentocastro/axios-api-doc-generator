@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   render() {
     return (
       <nav className='Navbar'>
@@ -15,25 +16,43 @@ export default class Navbar extends Component {
         </div>
 
         <div className='api-calls'>
-          <div className='api-call'>
+            {/* TODO: move this to another component, like "NavbarItem" */}
+            {/* TODO: refactor */}
             {/* TODO: accordeon with "request-summary" */}
-            <p className='request-summary'>[get] /hello-world</p>
-            <div className='cases -color-green'>
-              <p className='case'>(200) must return an "message" on the body</p>
-              <p className='case'>(200) must return an "potato" on the body</p>
-            </div>
-          </div>
+            {this.props.apiDocs.map((apiDocForRoute, i) => {
+              const [ firstApiCall ] = apiDocForRoute;
+              const { requestDetails } = firstApiCall;
+              const { method, path } = requestDetails;
 
-          <div className='api-call'>
-            <p className='request-summary'>[post] /users/sign-up</p>
-            <div className='cases -color-red'>
-              <p className='case -is-selected'>(500) must return an "error" object when receiving an empty "user"</p>
-              <p className='case'>(500) must return an "error" object when receiving an empty "user.password"</p>
-              <p className='case'>(500) must return an "error" object when receiving an empty "user.password" that is not strong enough</p>
-            </div>
-          </div>
+              return (
+                <div className='api-call' key={i}>
+                  <p className='request-summary'>[{method}] {path}</p>
+
+                  {/* TODO: load "-color-green" variant depending on request status.
+                    This will might cause a fix on ".css".
+                  */}
+                  <div className='cases -color-green'>
+                    {apiDocForRoute.map((apiCall, j) => {
+                      const { testResult } = apiCall;
+
+                      return (
+                        <Fragment key={j}>
+                          <p className='case'>{testResult.description}</p>
+                        </Fragment>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </nav>
     );
   }
 }
+
+Navbar.propTypes = {
+  apiDocs: PropTypes.array.isRequired,
+};
+
+export default Navbar;

@@ -15,14 +15,18 @@ module.exports = {
 
 On `fifa-champs-backend`, we create a route like `/api/docs` which returns this `storybook` static html.
 
-```js
 TODO
 
+3. Criar testes para a rota "/hello-world", tendo assim, um cenário real de multiplicos arquivos no "/tmp/axios...";
 4. fazer funcionar com props
+  4.0. [bug] O arquivo está com apenas 2 niveis de array quando deveria ter 3.
+  4.1. editar o arquivo "api-docs.json" para ficar com informações bonitas iguais ao do protótipo no photoshop.
+  E para que ele não seja sobescrito toda hora pela task "npm test", criar com o nome de "api-docs.example.json" e importá-lo no lugar do "api-docs.json" (só não esquecer de voltar o import depois).
 5. exportar arquivo ".js", ".html" e ".css"
 6. criar um método no "axios-api-doc-generator" que recebe o express's "app" e coloca uma rota "/api/docs
+7. exportar o "config/jest/global-teardown.js" como uma função do "axios-api-doc-generator.js";
 
-
+```
 // ApiDoc.propTypes = {
 //   apiCallDetails: {
 //     requestDetails: PropTypes.shape({
@@ -46,4 +50,21 @@ TODO
 // };
 
 // export default ApiDoc;
+```
+
+```html
+<div className='api-call'>
+  <p className='request-summary'>[get] /hello-world</p>
+  <div className='cases -color-green'>
+    <p className='case'>(200) must return an "message" on the body</p>
+    <p className='case'>(200) must return an "potato" on the body</p>
+  </div>
+
+  <p className='request-summary'>[post] /users/sign-up</p>
+  <div className='cases -color-red'>
+    <p className='case -is-selected'>(500) must return an "error" object when receiving an empty "user"</p>
+    <p className='case'>(500) must return an "error" object when receiving an empty "user.password"</p>
+    <p className='case'>(500) must return an "error" object when receiving an empty "user.password" that is not strong enough</p>
+  </div>
+</div>
 ```

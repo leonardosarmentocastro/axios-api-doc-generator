@@ -11,11 +11,15 @@ import '../../shared/styles/font-faces.css';
 import '../../shared/styles/variables.css';
 import './styles.css';
 
+import apiDocs from '../../api-docs.json';
+
 class App extends Component {
   render() {
     return (
       <div className='app'>
-        <Navbar />
+        <Navbar
+          apiDocs={apiDocs}
+        />
         <ApiCallSummary />
       </div>
     );

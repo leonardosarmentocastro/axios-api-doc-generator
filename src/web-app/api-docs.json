@@ -1,0 +1,66 @@
+[
+  [
+    {
+      "requestDetails": {
+        "headers": {
+          "request-custom-headers": 12345
+        },
+        "method": "get",
+        "path": "/hello-world"
+      },
+      "responseDetails": {
+        "body": {
+          "message": "Hello world"
+        },
+        "headers": {
+          "x-powered-by": "Express",
+          "response-example-custom-header": "example-value",
+          "content-length": "30",
+          "etag": "W/\"1e-DYn5xR28p6BBNe/JdiVUPvy/aiU\"",
+          "date": "Sun, 29 Jul 2018 19:54:31 GMT",
+          "connection": "close"
+        },
+        "status": {
+          "code": 200,
+          "text": "OK"
+        }
+      },
+      "testResult": {
+        "description": "\"status.text\": \"OK\"",
+        "fullName": "Generating API DOCS for: [GET] /hello-world [singleton] \"response details\" must match the following: \"status.text\": \"OK\""
+      }
+    }
+  ],
+  [
+    {
+      "requestDetails": {
+        "headers": {
+          "request-custom-headers": 12345
+        },
+        "method": "get",
+        "path": "/hello-world"
+      },
+      "responseDetails": {
+        "body": {
+          "message": "Hello world"
+        },
+        "headers": {
+          "x-powered-by": "Express",
+          "response-example-custom-header": "example-value",
+          "content-length": "30",
+          "etag": "W/\"1e-DYn5xR28p6BBNe/JdiVUPvy/aiU\"",
+          "date": "Sun, 29 Jul 2018 19:54:31 GMT",
+          "connection": "close"
+        },
+        "status": {
+          "code": 200,
+          "text": "OK"
+        }
+      },
+      "testResult": {
+        "description": "\"status.text\": \"OK\"",
+        "fullName": "Generating API DOCS for: [GET] /hello-world [singleton] \"response details\" must match the following: \"status.text\": \"OK\""
+      }
+    }
+  ]
+]
