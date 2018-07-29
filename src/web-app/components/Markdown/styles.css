@@ -1,0 +1,10 @@
+.Markdown {
+  padding: 1.2rem;
+  box-shadow: inset .1rem .1rem rgba(0, 0, 0, 0.04);
+  background: #fafbfb;
+}
+
+.Markdown code {
+  font-size: 1.2em;
+  font-family: 'yantramanav-light';
+}

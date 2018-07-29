@@ -16,46 +16,34 @@ module.exports = {
 On `fifa-champs-backend`, we create a route like `/api/docs` which returns this `storybook` static html.
 
 ```js
-// TODO:
-// Replace the storybook for: "parceljs" along with react's server side rendering since
-// native nodejs modules can't be used with webpack on "target: node".
-// import fs from 'fs';
-// import React from 'react';
-// import { storiesOf } from '@storybook/react';
+TODO
 
-// import ApiDoc from './components/ApiDoc';
-// import { getApiDocsFiles } from '../commons/utils';
+4. fazer funcionar com props
+5. exportar arquivo ".js", ".html" e ".css"
+6. criar um método no "axios-api-doc-generator" que recebe o express's "app" e coloca uma rota "/api/docs
 
-// (async () => {
-//   // [
-//   //   [{ ...details of all "GET /hello-world" api calls }],
-//   //   [{ ...details of all "POST /users/sign_up" api calls }],
-//   //   ...
-//   // ]
-//   const apiDocsFiles = await getApiDocsFiles();
 
-//   apiDocsFiles.forEach(apiDocFile => {
-//     const [ firstApiCallDetails ] = apiDocFile;
-//     const {
-//       requestDetails: {
-//         method,
-//         path
-//       }
-//     } = firstApiCallDetails;
+// ApiDoc.propTypes = {
+//   apiCallDetails: {
+//     requestDetails: PropTypes.shape({
+//       method: PropTypes.string.isRequired,
+//       path: PropTypes.string.isRequired,
+//       headers: PropTypes.array,
+//     }),
+//     responseDetails: PropTypes.shape({
+//       body: PropTypes.any.isRequired,
+//       headers: PropTypes.array,
+//       status: PropTypes.shape({
+//         code: PropTypes.string.isRequired,
+//         text: PropTypes.string.isRequired,
+//       }),
+//     }),
+//     testResults: PropTypes.shape({
+//       description: PropTypes.string.isRequired,
+//       fullName: PropTypes.string.isRequired,
+//     }),
+//   },
+// };
 
-//     // Creates a story for the giving API call
-//     const apiCall = `[${method}] ${path}`; // [GET] /hello-world
-//     let stories = storiesOf(apiCall, module);
-
-//     // Creates a showcase of each API call scenario specified on functional tests.
-//     apiDocFile.forEach(apiCallDetails => {
-//       const { testResult } = apiCallDetails;
-//       stories = stories.add(testResult.fullname, () => (
-//         <ApiDoc
-//           apiCallDetails={apiCallDetails}
-//         />
-//       ));
-//     });
-//   });
-// })();
+// export default ApiDoc;
 ```

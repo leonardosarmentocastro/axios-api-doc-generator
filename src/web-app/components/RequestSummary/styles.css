@@ -1,0 +1,34 @@
+.RequestSummary {
+  margin-bottom: 2.4rem;
+}
+
+.RequestSummary > .title {
+  margin-bottom: 1.2rem;
+
+  font-family: 'yantramanav-bold';
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.RequestSummary > .attr-container {
+  margin-bottom: 1.8rem;
+}
+
+.RequestSummary > .attr-container > .title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.RequestSummary > .attr-container > .methods > .method {
+  padding: .15rem .3rem;
+  margin-right: 1.2rem;
+
+  display: inline-block;
+
+  color: #fff;
+  font-family: 'yantramanav-light';
+  font-size: 1.4rem;
+  text-transform: uppercase;
+
+  background-color: var(--color-gray-darker);
+}

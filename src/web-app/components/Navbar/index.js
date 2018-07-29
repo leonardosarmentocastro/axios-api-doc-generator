@@ -5,7 +5,7 @@ import './styles.css';
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className='navbar'>
+      <nav className='Navbar'>
         <div className='logo'>
           <p className='text'>API docs</p>
         </div>

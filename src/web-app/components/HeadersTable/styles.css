@@ -1,0 +1,24 @@
+.HeadersTable {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.HeadersTable .head {
+  font-family: 'yantramanav-bold';
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.HeadersTable .body .cell {
+  font-family: 'yantramanav-light';
+  font-size: 1.4rem;
+}
+
+.HeadersTable .head, .HeadersTable .cell {
+  padding: 1.2rem 2.4rem;
+  border: 1px solid var(--color-gray-lighter);
+}
+
+.HeadersTable .row:nth-child(2n) {
+  background-color: #f8f8f8;
+}
