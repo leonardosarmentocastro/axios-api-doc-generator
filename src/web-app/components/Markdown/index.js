@@ -1,22 +1,24 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 
-const Markdown = () => (
+const Markdown = (props) => (
   <ReactMarkdown
     className="Markdown"
     skipHtml={true}
     escapeHtml={true}
     source={`
 \`\`\`json
-{
-code: 'USER_IS_EMPTY',
-message: 'The provided "user" payload can\'t be empty.',
-}
+${props.text}
 \`\`\`
   `}
   />
 );
+
+Markdown.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 
 export default Markdown;

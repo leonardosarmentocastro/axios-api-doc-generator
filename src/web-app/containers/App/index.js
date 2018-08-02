@@ -14,13 +14,27 @@ import './styles.css';
 import apiDocs from '../../api-docs.json';
 
 class App extends Component {
+  state = {
+    apiCall: null,
+  };
+
+  showApiCallSummary = (apiCall) => {
+    this.setState({
+      apiCall,
+    });
+  }
+
   render() {
     return (
       <div className='app'>
         <Navbar
           apiDocs={apiDocs}
+          showApiCallSummary={this.showApiCallSummary}
         />
-        <ApiCallSummary />
+
+        <ApiCallSummary
+          apiCall={this.state.apiCall}
+        />
       </div>
     );
   }

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 
-const HeadersTable = () => (
+const HeadersTable = (props) => (
   <table className='HeadersTable'>
     <thead className='header'>
       <tr>
@@ -12,18 +13,22 @@ const HeadersTable = () => (
     </thead>
 
     <tbody className='body'>
-      {/* TODO: Create "row" with received data from props. */}
-      <tr className='row'>
-        <td className='cell'>Authorization</td>
-        <td className='cell'>abcde-fghij-123456</td>
-      </tr>
+      {Object.keys(props.headers).map(key => {
+        const value = props.headers[key];
 
-      <tr className='row'>
-        <td className='cell'>Content-type</td>
-        <td className='cell'>application-json</td>
-      </tr>
+        return (
+          <tr className='row' key={key}>
+            <td className='cell'>{key}</td>
+            <td className='cell'>{value}</td>
+          </tr>
+        );
+      })}
     </tbody>
   </table>
 );
+
+HeadersTable.propTypes = {
+  headers: PropTypes.object,
+};
 
 export default HeadersTable;

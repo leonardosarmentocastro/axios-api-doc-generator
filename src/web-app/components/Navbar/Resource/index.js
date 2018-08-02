@@ -4,13 +4,19 @@ import PropTypes from 'prop-types';
 import { getColorVariantForHttpStatus } from '../../../shared/helpers';
 import './styles.css';
 
-class ApiCall extends Component {
-  constructor(props) {
-    super(props);
+class Resource extends Component {
+  state = {
+    isCollapsed: false,
+  };
 
-    this.state = {
-      isCollapsed: false,
-    };
+  get requestSummary() {
+    const [ firstApiCall ] = this.props.apiDocForResource;
+    const {
+      requestDetails: { method, path },
+    } = firstApiCall;
+
+    const requestSummary = `[${method}] ${path}`;
+    return requestSummary;
   }
 
   collapse() {
@@ -29,14 +35,29 @@ class ApiCall extends Component {
     return colorVariant;
   }
 
-  get requestSummary() {
-    const [ firstApiCall ] = this.props.apiDocForResource;
-    const {
-      requestDetails: { method, path },
-    } = firstApiCall;
+  renderApiCalls = () => {
+    return (
+      <div className='api-calls'>
+        {this.props.apiDocForResource.map((apiCall, i) => {
+          const colorVariant = this.getColorVariantForApiCall(apiCall);
+          const { isSelected, testResult } = apiCall;
 
-    const requestSummary = `[${method}] ${path}`;
-    return requestSummary;
+          return (
+            <p
+              className={`
+                api-call
+                ${colorVariant}
+                ${isSelected ? '-is-selected' : ''}
+              `.trim()}
+              key={i}
+              onClick={() => this.props.onClick(apiCall)}
+            >
+              {testResult.description}
+            </p>
+          );
+        })}
+      </div>
+    );
   }
 
   render() {
@@ -49,29 +70,13 @@ class ApiCall extends Component {
           {this.requestSummary}
         </p>
 
-        {!this.state.isCollapsed &&
-          <div className='api-calls'>
-            {this.props.apiDocForResource.map((apiCall, i) => {
-              const colorVariant = this.getColorVariantForApiCall(apiCall);
-              const { testResult } = apiCall;
-
-              return (
-                <p
-                  key={i}
-                  className={`api-call ${colorVariant}`}
-                >
-                  {testResult.description}
-                </p>
-              );
-            })}
-          </div>
-        }
+        {!this.state.isCollapsed && this.renderApiCalls()}
       </div>
     );
   }
 }
 
-ApiCall.propTypes = {
+Resource.propTypes = {
   apiDocForResource: PropTypes.arrayOf(PropTypes.shape({
     requestDetails: PropTypes.shape({
       method: PropTypes.string.isRequired,
@@ -86,6 +91,7 @@ ApiCall.propTypes = {
       description: PropTypes.string.isRequired,
     }),
   })),
+  onClick: PropTypes.func.isRequired,
 };
 
-module.exports = ApiCall;
+module.exports = Resource;

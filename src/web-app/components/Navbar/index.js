@@ -5,6 +5,19 @@ import Resource from './Resource';
 import './styles.css';
 
 class Navbar extends Component {
+  handleResourceOnClick = (apiCall) => {
+    this.unselectAllApiCallsOfAllResources();
+
+    apiCall.isSelected = true;
+    this.props.showApiCallSummary(apiCall);
+  }
+
+  unselectAllApiCallsOfAllResources = () => {
+    this.props.apiDocs.forEach(apiDocForResource => {
+      apiDocForResource.forEach(apiCall => apiCall.isSelected = false);
+    });
+  }
+
   render() {
     return (
       <nav className='Navbar'>
@@ -19,8 +32,9 @@ class Navbar extends Component {
         <div className='resources'>
           {this.props.apiDocs.map((apiDocForResource, i) => (
             <Resource
-              key={i}
               apiDocForResource={apiDocForResource}
+              onClick={this.handleResourceOnClick}
+              key={i}
             />
           ))}
         </div>
@@ -31,6 +45,7 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   apiDocs: PropTypes.array.isRequired,
+  showApiCallSummary: PropTypes.func.isRequired,
 };
 
 export default Navbar;
