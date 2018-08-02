@@ -2,9 +2,7 @@
   [
     {
       "requestDetails": {
-        "headers": {
-          "request-custom-headers": 12345
-        },
+        "headers": {},
         "method": "get",
         "path": "/hello-world"
       },
@@ -13,12 +11,7 @@
           "message": "Hello world"
         },
         "headers": {
-          "x-powered-by": "Express",
-          "response-example-custom-header": "example-value",
-          "content-length": "30",
-          "etag": "W/\"1e-DYn5xR28p6BBNe/JdiVUPvy/aiU\"",
-          "date": "Sun, 29 Jul 2018 19:54:31 GMT",
-          "connection": "close"
+          "response-example-custom-header": "example-value"
         },
         "status": {
           "code": 200,
@@ -26,40 +19,124 @@
         }
       },
       "testResult": {
-        "description": "\"status.text\": \"OK\"",
-        "fullName": "Generating API DOCS for: [GET] /hello-world [singleton] \"response details\" must match the following: \"status.text\": \"OK\""
+        "description": "(200) must return an \"{ message: \"Hello world\" }\"",
+        "fullName": "[get] /hello-world (200) must return an \"{ message: \"Hello world\" }\""
       }
     }
   ],
   [
     {
       "requestDetails": {
-        "headers": {
-          "request-custom-headers": 12345
-        },
-        "method": "get",
-        "path": "/hello-world"
+        "headers": {},
+        "method": "post",
+        "path": "/users/sign-up"
       },
       "responseDetails": {
         "body": {
-          "message": "Hello world"
+          "id": "1",
+          "createdAt": "2018-08-02T13:54:23.181Z",
+          "slack": {
+            "displayName": "@leonardo.caxumba"
+          },
+          "password": "1q2w#E$R"
         },
-        "headers": {
-          "x-powered-by": "Express",
-          "response-example-custom-header": "example-value",
-          "content-length": "30",
-          "etag": "W/\"1e-DYn5xR28p6BBNe/JdiVUPvy/aiU\"",
-          "date": "Sun, 29 Jul 2018 19:54:31 GMT",
-          "connection": "close"
-        },
+        "headers": {},
         "status": {
           "code": 200,
           "text": "OK"
         }
       },
       "testResult": {
-        "description": "\"status.text\": \"OK\"",
-        "fullName": "Generating API DOCS for: [GET] /hello-world [singleton] \"response details\" must match the following: \"status.text\": \"OK\""
+        "description": "(200) must return the \"savedUser\" from database on body",
+        "fullName": "[post] /users/sign-up (200) must return the \"savedUser\" from database on body"
+      }
+    },
+    {
+      "requestDetails": {
+        "headers": {},
+        "method": "post",
+        "path": "/users/sign-up"
+      },
+      "responseDetails": {
+        "body": {
+          "code": "USER_IS_EMPTY",
+          "message": "The provided \"user\" payload can't be empty."
+        },
+        "headers": {},
+        "status": {
+          "code": 500,
+          "text": "Internal Server Error"
+        }
+      },
+      "testResult": {
+        "description": "(500) when receiving an empty user",
+        "fullName": "[post] /users/sign-up (500) when receiving an empty user"
+      }
+    },
+    {
+      "requestDetails": {
+        "headers": {},
+        "method": "post",
+        "path": "/users/sign-up"
+      },
+      "responseDetails": {
+        "body": {
+          "code": "NO_SLACK_DISPLAY_NAME_PROVIDED",
+          "message": "The property \"user.slack.displayName\" can' be empty."
+        },
+        "headers": {},
+        "status": {
+          "code": 500,
+          "text": "Internal Server Error"
+        }
+      },
+      "testResult": {
+        "description": "(500) when receiving an empty \"user.slack.displayName\"",
+        "fullName": "[post] /users/sign-up (500) when receiving an empty \"user.slack.displayName\""
+      }
+    },
+    {
+      "requestDetails": {
+        "headers": {},
+        "method": "post",
+        "path": "/users/sign-up"
+      },
+      "responseDetails": {
+        "body": {
+          "code": "NO_PASSWORD_PROVIDED",
+          "message": "The property \"user.password\" can' be empty."
+        },
+        "headers": {},
+        "status": {
+          "code": 500,
+          "text": "Internal Server Error"
+        }
+      },
+      "testResult": {
+        "description": "(500) when receiving an empty \"user.password\"",
+        "fullName": "[post] /users/sign-up (500) when receiving an empty \"user.password\""
+      }
+    },
+    {
+      "requestDetails": {
+        "headers": {},
+        "method": "post",
+        "path": "/users/sign-up"
+      },
+      "responseDetails": {
+        "body": {
+          "code": "PASSWORD_IS_NOT_STRONG_ENOUGH",
+          "message": "The provided \"password\" is not strong enough."
+        },
+        "headers": {},
+        "status": {
+          "code": 500,
+          "text": "Internal Server Error"
+        }
+      },
+      "testResult": {
+        "description": "(500) when receiving an \"user.password\" that is not strong enough",
+        "fullName": "[post] /users/sign-up (500) when receiving an \"user.password\" that is not strong enough"
       }
     }
   ]

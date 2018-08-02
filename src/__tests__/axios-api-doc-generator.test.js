@@ -1,16 +1,19 @@
-const {
-  API,
-  closeWebserver,
-  startWebserver,
-} = require('./helpers/tests-helper');
 const axiosApiDocGenerator = require('../axios-api-doc-generator');
+const {
+  testsHelper: {
+    API,
+    closeWebserver,
+    startWebserver,
+  },
+} = require('../../lib/helpers');
 
 beforeAll(async () => await startWebserver());
 
-afterAll(async () => {
-  axiosApiDocGenerator.createApiDocsForTests();
-  return await closeWebserver();
-});
+afterAll(async () => await closeWebserver());
+// afterAll(async () => {
+//   await axiosApiDocGenerator.createApiDocsForTests();
+//   return await closeWebserver();
+// });
 
 describe('Generating API DOCS for:', () => {
   describe('[GET] /hello-world', () => {
@@ -20,7 +23,7 @@ describe('Generating API DOCS for:', () => {
           method: 'get',
           path: '/hello-world',
           config: {
-            headers: { 'request-custom-headers': 12345 },
+            headers: { 'request-custom-header': 12345 },
           }
         },
         response: {
@@ -85,7 +88,9 @@ describe('Generating API DOCS for:', () => {
     });
 
     describe('generated ".json" file', () => {
-      // TODO
+      // TODO...
+      // beforeAll(async () => await axiosApiDocGenerator.createApiDocsForTests());
+
     });
   });
 });

@@ -27,6 +27,16 @@ TODO
 7. exportar o "config/jest/global-teardown.js" como uma função do "axios-api-doc-generator.js";
 
 ```
+[get] /hello-world
+  (200) must return an "message" on the body
+
+[post] /users/sign-up
+  (500) must return an "error" object when receiving an empty "user"
+  (500) must return an "error" object when receiving an empty "user.password"
+  (500) must return an "error" object when receiving an empty "user.password" that is not strong enough
+```
+
+```
 // ApiDoc.propTypes = {
 //   apiCallDetails: {
 //     requestDetails: PropTypes.shape({

@@ -1,6 +1,6 @@
 const { API_DOCS_TEMP_JSON_FOLDER_PATH } = require('./commons/constants');
 const { appendTestResultToLastApiCall, getFormattedJsonFileName } = require('./commons/helpers');
-const { createDirectory, createJsonFile } = require('./commons/utils');
+const { createDirectory, createJsonFile, deleteDirectory, getApiDocsFiles } = require('./commons/utils');
 const requestInterceptor = require('./request/request-interceptor');
 const responseInterceptor = require('./response/response-interceptor');
 const singletons = require('./commons/singletons');
@@ -9,6 +9,8 @@ const axiosApiDocGenerator = {
   get appendTestResultToLastApiCall() { return appendTestResultToLastApiCall; },
   get createDirectory() { return createDirectory; },
   get createJsonFile() { return createJsonFile; },
+  get deleteDirectory() { return deleteDirectory; },
+  get getApiDocsFiles() { return getApiDocsFiles; },
   get getFormattedJsonFileName() { return getFormattedJsonFileName; },
   get requestInterceptor() { return { ...requestInterceptor }; },
   get responseInterceptor() { return { ...responseInterceptor }; },
@@ -20,10 +22,15 @@ const axiosApiDocGenerator = {
 
     this.appendTestResultToLastApiCall(testResult);
   },
+  async createApiDocsFileForWebApp() {
+    const apiDocsFiles = await this.getApiDocsFiles();
+
+    const content = JSON.stringify(apiDocsFiles, null, 2);
+    const fileName = `${__dirname}/web-app/api-docs.json`;
+    await createJsonFile(fileName, content);
+  },
   async createApiDocsForTests() {
     try {
-      // TODO 1: at each "npm run test", delete the folder and then recreate it.
-      // TODO 2: move it to the global "setup" method in jest.
       await this.createTempDirectoryForJsonFiles();
       await this.createJsonFileForApiCalls();
     } catch(err) {
@@ -60,6 +67,24 @@ const axiosApiDocGenerator = {
 
     return null;
   },
+  async deleteTempDirectoryForJsonFiles() {
+    const folderPath = API_DOCS_TEMP_JSON_FOLDER_PATH;
+    const err = await this.deleteDirectory(folderPath);
+
+    const wasOperationSuccessful = !(err);
+    if (!wasOperationSuccessful) {
+      const error = `[error] Couldn't delete folder ${folderPath}: ${err}`;
+      throw error;
+    }
+
+    return null;
+  },
+  async jestGlobalSetup(globalConfig) {
+    await this.deleteTempDirectoryForJsonFiles();
+  },
+  async jestGlobalTearDown(globalConfig) {
+    await this.createApiDocsFileForWebApp();
+  }
 };
 
 module.exports = axiosApiDocGenerator;
