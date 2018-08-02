@@ -17,14 +17,9 @@ On `fifa-champs-backend`, we create a route like `/api/docs` which returns this 
 
 TODO
 
-3. Criar testes para a rota "/hello-world", tendo assim, um cenário real de multiplicos arquivos no "/tmp/axios...";
 4. fazer funcionar com props
-  4.0. [bug] O arquivo está com apenas 2 niveis de array quando deveria ter 3.
-  4.1. editar o arquivo "api-docs.json" para ficar com informações bonitas iguais ao do protótipo no photoshop.
-  E para que ele não seja sobescrito toda hora pela task "npm test", criar com o nome de "api-docs.example.json" e importá-lo no lugar do "api-docs.json" (só não esquecer de voltar o import depois).
 5. exportar arquivo ".js", ".html" e ".css"
 6. criar um método no "axios-api-doc-generator" que recebe o express's "app" e coloca uma rota "/api/docs
-7. exportar o "config/jest/global-teardown.js" como uma função do "axios-api-doc-generator.js";
 
 ```
 [get] /hello-world
