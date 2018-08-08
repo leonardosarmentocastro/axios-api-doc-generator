@@ -2,17 +2,21 @@
   "name": "axios-api-doc-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/node/axios-api-doc-generator.js",
   "scripts": {
+    "build": "npm run build:for-node && npm run build:web-app",
+    "build:for-node": "node build/for-node.js",
+    "build:for-web": "node build/for-web.js",
     "start": "parcel src/web-app/index.html",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --runInBand",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "axios": "^0.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "cors": "^2.8.4",
@@ -33,7 +37,8 @@
   },
   "babel": {
     "plugins": [
-      "transform-class-properties"
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   },
   "jest": {

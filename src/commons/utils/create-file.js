@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const writeFile = util.promisify(fs.writeFile);
 
-const createJsonFile = async (fileName, content) => {
+const createFile = async (fileName, content) => {
   try {
     await writeFile(fileName, content);
   } catch (err) {
@@ -13,4 +13,4 @@ const createJsonFile = async (fileName, content) => {
   return null;
 };
 
-module.exports = createJsonFile;
+module.exports = createFile;

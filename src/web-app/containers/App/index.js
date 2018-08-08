@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Switch,
-// } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import ApiCallSummary from '../../components/ApiCallSummary';
 import Navbar from '../../components/Navbar';
 import '../../shared/styles/font-faces.css';
 import '../../shared/styles/variables.css';
 import './styles.css';
-
-import apiDocs from '../../api-docs.json';
 
 class App extends Component {
   state = {
@@ -28,7 +22,7 @@ class App extends Component {
     return (
       <div className='app'>
         <Navbar
-          apiDocs={apiDocs}
+          apiDocs={this.props.apiDocs}
           showApiCallSummary={this.showApiCallSummary}
         />
 
@@ -39,5 +33,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  apiDocs: PropTypes.array.isRequired,
+};
 
 export default App;
