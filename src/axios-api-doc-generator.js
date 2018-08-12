@@ -1,8 +1,11 @@
+const express = require('express');
+
 const {
   appendTestResultToLastApiCall,
   createFileForApiCalls,
   createTempDirectoryForJsonFiles,
   deleteTempDirectoryForJsonFiles,
+  isLibBeingUsedAsAnNodeModule,
   rewriteEntryHtmlFile,
 } = require('./commons/helpers');
 const requestInterceptor = require('./request/request-interceptor');
@@ -14,12 +17,27 @@ const axiosApiDocGenerator = {
   get createFileForApiCalls() { return createFileForApiCalls },
   get createTempDirectoryForJsonFiles() { return createTempDirectoryForJsonFiles; },
   get deleteTempDirectoryForJsonFiles() { return deleteTempDirectoryForJsonFiles; },
+  get handler() { return handler; },
   get rewriteEntryHtmlFile() { return rewriteEntryHtmlFile; },
 
   // PUBLIC
   get requestInterceptor() { return { ...requestInterceptor }; },
   get responseInterceptor() { return { ...responseInterceptor }; },
   get singletons() { return { ...singletons }; },
+
+  async connectStaticFilesServirgMiddleware(app, headers) {
+    const path = (() => {
+      switch (true) {
+        case isLibBeingUsedAsAnNodeModule():
+          return `${process.cwd()}/node_modules/axios-api-doc-generator/dist/web`;
+        case !isLibBeingUsedAsAnNodeModule():
+          return `${process.cwd()}/dist/web`;
+      }
+    })();
+
+    const middleware = express.static(path);
+    app.use('/api/docs', middleware);
+  },
 
   async createApiDocsForTests() {
     try {

@@ -4,10 +4,11 @@
   "description": "",
   "main": "dist/node/axios-api-doc-generator.js",
   "scripts": {
-    "build": "npm run build:for-node && npm run build:web-app",
+    "build": "npm run build:for-node && npm run build:for-web",
     "build:for-node": "node build/for-node.js",
     "build:for-web": "node build/for-web.js",
     "start": "parcel src/web-app/index.html",
+    "start:webserver": "node lib/index.js",
     "test": "jest --runInBand",
     "test:watch": "npm run test -- --watch"
   },

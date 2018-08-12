@@ -16,12 +16,13 @@ afterAll(async () => await closeWebserver());
 // });
 
 describe('Generating API DOCS for:', () => {
-  describe('[GET] /hello-world', () => {
+  const ENDPOINT = '/api/hello-world';
+  describe('[GET] ', () => {
     const specs = {
       apiCall: {
         request: {
           method: 'get',
-          path: '/hello-world',
+          path: ENDPOINT,
           config: {
             headers: { 'request-custom-header': 12345 },
           }

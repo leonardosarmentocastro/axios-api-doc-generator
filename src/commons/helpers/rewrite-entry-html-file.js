@@ -1,15 +1,17 @@
 const { createFile } = require('../utils');
 const getApiDocsFiles = require('./get-api-docs-files');
+const isLibBeingUsedAsAnNodeModule = require('./is-lib-being-used-as-an-node-module');
 const replaceWindowVariableOnHtmlFile = require('./replace-window-variable-on-html-file');
 
 const rewriteEntryHtmlFile = async () => {
-  const isLibBeingUsedAsAnNodeModule = !(process.cwd().includes('axios-api-doc-generator'));
-  const htmlFilePath = (
-    isLibBeingUsedAsAnNodeModule ?
-      `${process.cwd()}/node_modules/axios-api-doc-generator/dist/web/index.html`
-      :
-      `${__dirname}/../../web-app/index.html`
-  );
+  const htmlFilePath = (() => {
+    switch (true) {
+      case isLibBeingUsedAsAnNodeModule():
+        return `${process.cwd()}/node_modules/axios-api-doc-generator/dist/web/index.html`;
+      case !isLibBeingUsedAsAnNodeModule():
+        return `${__dirname}/../../web-app/index.html`;
+    }
+  })();
 
   const apiDocsFiles = await getApiDocsFiles();
   const contentToReplace = JSON.stringify(apiDocsFiles);

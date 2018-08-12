@@ -8,7 +8,11 @@ const file = Path.join(__dirname, '../src/web-app/index.html');
 const options = {
   outDir: './dist/web', // The out directory to put the build files in, defaults to dist
   outFile: 'index.html', // The name of the outputFile
-  // publicUrl: './', // The url to server on, defaults to dist
+
+  // NOTE: Will also fix the problem of serving the application as the "index.html" file
+  // will now uses relative paths to import its dependencies.
+  publicUrl: './', // The url to server on, defaults to dist
+
   watch: false, // whether to watch the files and rebuild them on change, defaults to process.env.NODE_ENV !== 'production'
   cache: false, // Enabled or disables caching, defaults to true
   // cacheDir: '.cache', // The directory cache gets put in, defaults to .cache
