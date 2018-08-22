@@ -1,7 +1,7 @@
 const { filterCustomHeaders } = require('../../commons/helpers');
 
 const getResponseCustomHeaders = (headersFromAPICall) => {
-  const expressHeaders = ['x-powered-by', 'content-length', 'etag', 'date', 'connection'];
+  const expressHeaders = ['x-powered-by', 'content-length', 'etag', 'date', 'connection', 'vary'];
   const headersToBeIgnored = ['content-type', ...expressHeaders];
   const responseCustomHeaders =
     filterCustomHeaders(headersFromAPICall, headersToBeIgnored);
