@@ -75,18 +75,14 @@ To do so, **create an `axios` instance to be used inside your functional tests:*
 
 **lib/helpers/tests-helper.js**
 ```js
-const { requestInterceptor, responseInterceptor } = require('axios-api-doc-generator');
+const { createAxiosInstance } = require('axios-api-doc-generator');
 
 const API = (() => {
   const ip = '127.0.0.1';
   const port = 8080;
-  const instance = axios.create({
+  const instance = createAxiosInstance({
     baseURL: `http://${ip}:${port}`, // Address where your server is exposed
   });
-
-  // Intercept all API calls during tests so API documentation can be generated automatically.
-  instance.interceptors.request.use(requestInterceptor.onSuccess);
-  instance.interceptors.response.use(responseInterceptor.onSuccess, responseInterceptor.onError);
 
   return instance;
 })();
