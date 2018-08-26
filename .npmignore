@@ -1,6 +1,7 @@
+.cache/
 build/
 config/
 lib/
 src/
+
 package-lock.json
-.cache/
