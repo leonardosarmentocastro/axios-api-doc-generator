@@ -186,7 +186,7 @@ const ip = '127.0.0.1';
 app.listen(port, ip, () => console.log(`Server is running on port ${port}`));
 ```
 
-Run your tests with `npm test` then open your favorite browser at http://127.0.0.1:8080 to see:
+Run your tests with `npm test`, start your server then open your favorite browser at http://127.0.0.1:8080 to see:
 ![](https://i.imgur.com/qRW2Pge.png)
 
 -----
