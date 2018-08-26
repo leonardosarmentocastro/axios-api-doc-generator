@@ -78,7 +78,7 @@ To do so, **create an `axios` instance to be used inside your functional tests:*
 const { requestInterceptor, responseInterceptor } = require('axios-api-doc-generator');
 
 const API = (() => {
-  const ip = 127.0.0.1;
+  const ip = '127.0.0.1';
   const port = 8080;
   const instance = axios.create({
     baseURL: `http://${ip}:${port}`, // Address where your server is exposed
@@ -141,8 +141,8 @@ For now, the solution is bound to **jest** because we relly on its global hooks 
 
 To do so, in your **jest configuration file(`package.json` or `jest.config.js`)** you must specify:
 ```json
+// Pretend we store all those files at `<rootDir>/config/jest/`
 {
-  // Pretend we store all those files at `<rootDir>/config/jest/`
   "globalSetup": "<rootDir>/config/jest/global-setup.js",
   "globalTeardown": "<rootDir>/config/jest/global-teardown.js",
   "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setup-test-framework-script-file.js"
@@ -182,7 +182,7 @@ const app = express();
 axiosApiDocGenerator.connectStaticFilesServirgMiddleware(app);
 
 const port = 8080;
-const ip = 127.0.0.1;
+const ip = '127.0.0.1';
 app.listen(port, ip, () => console.log(`Server is running on port ${port}`));
 ```
 
