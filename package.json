@@ -1,6 +1,6 @@
 {
   "name": "axios-api-doc-generator",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Automatically generates API documentation based on your application functional tests.",
   "main": "dist/node/axios-api-doc-generator.js",
   "scripts": {
@@ -12,7 +12,21 @@
     "test": "jest --runInBand",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "",
+  "author": "Leonardo Sarmento de Castro",
+  "homepage": "https://github.com/leonardosarmentocastro/axios-api-doc-generator",
+  "keywords": [
+    "xhr",
+    "http",
+    "ajax",
+    "promise",
+    "node",
+    "api",
+    "doc generator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leonardosarmentocastro/axios-api-doc-generator"
+  },
   "license": "ISC",
   "devDependencies": {
     "axios": "^0.18.0",
