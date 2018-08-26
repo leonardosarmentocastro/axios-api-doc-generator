@@ -96,9 +96,9 @@ module.exports = API;
 
 ### 3. Collecting data from API calls
 
-The interceptor connected to your `API` instance [will store all information into a singleton](#list-of-improvements).
+The interceptor connected to your `API` instance [will store all information into a singleton](#contribute).
 
-At every test file that you want to write api docs for, [you must call `createApiDocsForTests` after all tests are run](#list-of-improvements):
+At every test file that you want to write api docs for, [you must call `createApiDocsForTests` after all tests are run](#contribute):
 
 **lib/hello-world/__tests__/functional/[get]hello-world.js**
 ```js
