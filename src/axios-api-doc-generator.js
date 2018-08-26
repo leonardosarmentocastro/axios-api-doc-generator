@@ -1,3 +1,4 @@
+const axios = require('axios');
 const express = require('express');
 
 const {
@@ -21,8 +22,6 @@ const axiosApiDocGenerator = {
   get rewriteEntryHtmlFile() { return rewriteEntryHtmlFile; },
 
   // PUBLIC
-  get requestInterceptor() { return { ...requestInterceptor }; },
-  get responseInterceptor() { return { ...responseInterceptor }; },
   get singletons() { return { ...singletons }; },
 
   async connectStaticFilesServirgMiddleware(app, headers) {
@@ -50,6 +49,16 @@ const axiosApiDocGenerator = {
     }
 
     return Promise.resolve();
+  },
+
+  createAxiosInstance(config) {
+    const instance = axios.create(config);
+
+    // Intercept all API calls during tests so API documentation can be generated automatically.
+    instance.interceptors.request.use(requestInterceptor.onSuccess);
+    instance.interceptors.response.use(responseInterceptor.onSuccess, responseInterceptor.onError);
+
+    return instance;
   },
 
   async jestGlobalSetup(globalConfig) {
