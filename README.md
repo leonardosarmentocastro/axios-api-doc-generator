@@ -196,4 +196,7 @@ In case you liked the idea of this package and want to make it better, feel free
 1. Use `memory-cache` to store request/response information instead of using a singleton to write json files at `/tmp`folder;
 2. Automatically generates documentation for each API call, eliminating the need to call `createApiDocsForTests`;
 3. Try to turn it agnostic to test runner(jest) so we don't need `config/jest/*.js` files;
-4. Try to turn it agnostic to http library(axios).
+4. Try to turn it agnostic to http library(axios);
+5. Update the layout to be something like the [Imgur API](https://apidocs.imgur.com/#intro):
+
+![](https://i.imgur.com/8alDtWL.png)
